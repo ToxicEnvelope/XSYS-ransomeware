@@ -34,7 +34,7 @@ def clear_console():
 def encrypt(key, filename):
     chunkSize = 65 * 1024       # size of data char encrypted 65,792 bytes
     outFile = os.path.join(os.path.dirname(filename), ".(encrypted)"+os.path.basename(filename)) # add marker to filename
-    fileSIze = str(os.path.getsize(filename)).zfill(16) # get the size of filename and fill tp 16 bytes
+    fileSize = str(os.path.getsize(filename)).zfill(16) # get the size of filename and fill tp 16 bytes
     IV = ''  # initialize vector - randomize cipher modes
 
     for i in range(16):
