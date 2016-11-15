@@ -34,7 +34,7 @@ def clear_console():
 def encrypt(key, filename):
     chunkSize = 65 * 1024       # size of data char encrypted 65,792 bytes
     outFile = os.path.join(os.path.dirname(filename), ".(encrypted)"+os.path.basename(filename)) # add marker to filename
-    fileSize = str(os.path.getsize(filename)).zfill(16) # get the size of filename and fill tp 16 bytes
+    fileSize = str(os.path.getsize(filename)).zfill(16) # get the size of filename and fill with 16 bytes binary of zeros
     IV = ''  # initialize vector - randomize cipher modes
 
     for i in range(16):
@@ -156,7 +156,7 @@ def main():
       encFiles = main()                                 # run main function recursively
 
       if choice == "E":                                              # if choose "E"
-         password = raw_input(" Enter encrypted key: ")              # get keyinput from user
+         password = raw_input(" Enter encryption key: ")             # get keyinput from user
          for Tfiles in endFiles:                                     # run through all target files in encrypted file list
              if os.path.basename(Tfiles).startswith(".(encrypted)"): # check if add marker to filename exist
                 print " %s is already encrypted" %str(Tfiles)        # print to user
