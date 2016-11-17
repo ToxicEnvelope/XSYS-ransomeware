@@ -1,1 +1,0 @@
-# XSYS-ransomeware
