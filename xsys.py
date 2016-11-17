@@ -129,61 +129,61 @@ def main():
 
       clear_console()                                      # clear the console screen
 
-      # print the programs menu
-      print "\n\t\t################################"
-      print "\t\t## ~~~~~~~~ XSYS 1.0 ~~~~~~~~ ##"
-      print "\t\t##   Encrypt   ||   Decrypt   ##"
-      print "\t\t## ~~~~~~~~~~~~~~~~~~~~~~~~~~ ##"
-      print "\t\t## .....M.a.d.e....B.y....... ##"
-      print "\t\t##    Yahav   N   Hoffmann    ##"
-      print "\t\t##            A.K.A.          ##"
-      print "\t\t##     M  a  ~  F  a  r  $    ##"
-      print "\t\t################################"
-      print ""    
-      print ""    
-      print " ATTENTION !!! "
-      print ""    
-      print " This program may cause harm to your computer files system, machine functionality,"
-      print " personal data and private information."
-      print ""    
-      print " XSYS is a tool that build an Hierarchical Tree diagram of"
-      print " all files from your root folder and its descendants until its (E)ncrypt || (D)ecrypt any leaf"
-      print " in the system tree diagram.\n"
+# print the programs menu
+print "\n\t\t################################"
+print "\t\t## ~~~~~~~~ XSYS 1.0 ~~~~~~~~ ##"
+print "\t\t##   Encrypt   ||   Decrypt   ##"
+print "\t\t## ~~~~~~~~~~~~~~~~~~~~~~~~~~ ##"
+print "\t\t## .....M.a.d.e....B.y....... ##"
+print "\t\t##    Yahav   N   Hoffmann    ##"
+print "\t\t##            A.K.A.          ##"
+print "\t\t##     M  a  ~  F  a  r  $    ##"
+print "\t\t################################"
+print ""    
+print ""    
+print " ATTENTION !!! "
+print ""    
+print " This program may cause harm to your computer files system, machine functionality,"
+print " personal data and private information."
+print ""    
+print " XSYS is a tool that build an Hierarchical Tree diagram of"
+print " all files from your root folder and its descendants until its (E)ncrypt || (D)ecrypt any leaf"
+print " in the system tree diagram.\n"
 
-      choice = raw_input(" Do you want to (E)ncrypt or (D)ecrypt? ")
-      # password = raw_input(" Enter encryption key: ")  <-  move into the condition blocks
+choice = raw_input(" Do you want to (E)ncrypt or (D)ecrypt? ")
+# password = raw_input(" Enter encryption key: ")  <-  move into the condition blocks
 
-      encFiles = main()                                 # run main function recursively
+encFiles = main()                                 # run main function recursively
 
-      if choice == "E":                                              # if choose "E"
-         password = raw_input(" Enter encryption key: ")             # get keyinput from user
-         for Tfiles in endFiles:                                     # run through all target files in encrypted file list
-             if os.path.basename(Tfiles).startswith(".(encrypted)"): # check if add marker to filename exist
-                print " %s is already encrypted" %str(Tfiles)        # print to user
-                pass        # move in
+if choice == "E":                                              # if choose "E"
+ password = raw_input(" Enter encryption key: ")             # get keyinput from user
+ for Tfiles in endFiles:                                     # run through all target files in encrypted file list
+     if os.path.basename(Tfiles).startswith(".(encrypted)"): # check if add marker to filename exist
+        print " %s is already encrypted" %str(Tfiles)        # print to user
+        pass        # move in
 
-             elif Tfiles == os.path.join(os.getcwd(), sys.argv[0]):  # check if target files equal to current runing process folders input
-                pass        # move on
-             else:
-                encrypt(SHA256.new(password).digest(), str(Tfiles))  # digest the keyinput from target files and encrypt it using SHA256 key
-                print " Done encrypting %s" %str(Tfiles)      # print the encrypted files results
-                os.remove()                                   # remove the original files
+     elif Tfiles == os.path.join(os.getcwd(), sys.argv[0]):  # check if target files equal to current runing process folders input
+        pass        # move on
+     else:
+        encrypt(SHA256.new(password).digest(), str(Tfiles))  # digest the keyinput from target files and encrypt it using SHA256 key
+        print " Done encrypting %s" %str(Tfiles)      # print the encrypted files results
+        os.remove()                                   # remove the original files
 
-      elif choice == "D":                                            # if choose "D"
-           filename = raw_input(" Enter the filename to decrypt: ")  # get filname from user
-           pasword = raw_input(" Enter decryption key: ")            # get keyinput from user
-           if not os.path.exists(filename):                          # check if filenames path exists
-               print " The file does not exist"               # print message to user
-               sys.exit(0)   # exit the program
-           elif not filename.startswith(".(encrypted)"):             # check if add marker to filename exist
-               print " %s is already not encrypted" %filename # print message to user
-               sys.exit()    # exit the program
-           else:
-               decrypt(SHA256.new(password).digest(), filename)      # digest the keyinput from target files and decrypt it using SHA256 key
-               print " Done decrypting %s " %filename         # print message to user
-               os.remove(filename)                            # remove the encrypted file
+elif choice == "D":                                            # if choose "D"
+   filename = raw_input(" Enter the filename to decrypt: ")  # get filname from user
+   pasword = raw_input(" Enter decryption key: ")            # get keyinput from user
+   if not os.path.exists(filename):                          # check if filenames path exists
+       print " The file does not exist"               # print message to user
+       sys.exit(0)   # exit the program
+   elif not filename.startswith(".(encrypted)"):             # check if add marker to filename exist
+       print " %s is already not encrypted" %filename # print message to user
+       sys.exit()    # exit the program
+   else:
+       decrypt(SHA256.new(password).digest(), filename)      # digest the keyinput from target files and decrypt it using SHA256 key
+       print " Done decrypting %s " %filename         # print message to user
+       os.remove(filename)                            # remove the encrypted file
 
-      else:
-           print " Please choose a valid choice."             # print message to user
-           sys.exit()        # exit the program
+else:
+   print " Please choose a valid choice."             # print message to user
+   sys.exit()        # exit the program
 
