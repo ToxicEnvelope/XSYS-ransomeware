@@ -48,7 +48,7 @@ def encrypt(key, filename):
     encoder = base64
 
     with open(filename, 'rb') as infile:          # as we opend filename > readbinary code
-         with open(oudFile, 'wb') as outfile:     # stream binary code of filename and randIV into outfile 
+         with open(outFile, 'wb') as outfile:     # stream binary code of filename and randIV into outfile 
               outfile.write(filename)
               outfile.write(IV)
               while True:
@@ -92,7 +92,6 @@ def decrypt(key, filename):
          outfile.truncate(int(fileSize))  # stream and sort the ASCII numeric value of chars decrypted chars
 
 
-""" 
 # allfiles <scan for files in current directory>
  def allfiles():
       allFiles = []                                        # init allFiles as array
@@ -101,9 +100,8 @@ def decrypt(key, filename):
               allFiles.append(os.path.join(path, dir))   # add filenames full path in to allFiles Array
 
       return allFiles()                            # return the files list from allFiles Array
-""" 
 
-
+"""
 # allfiles <get all dirs and files from specific path>
 # parmas:
 # initpath <= path to scan
@@ -121,7 +119,7 @@ def allfiles(initpath):
             allFiles.append(path, files)
 
         return allFiles
-
+""" 
 
 clear_console()                                      # clear the console screen
 
