@@ -118,7 +118,7 @@ def allfiles(initpath):
         if len(files) == 0:
             break
         else:
-            allFiles.append(dirs, files)
+            allFiles.append(path, files)
 
         return allFiles
 
