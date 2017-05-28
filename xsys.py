@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+
+from smtp import * as SMTP
+from loader import * as LOADER
 import os, sys, platform, random, pkg_resources
 from Crypto.Hash import SHA256
 from Crypto.Cipher import AES
@@ -157,6 +160,20 @@ encFiles = main()                                 # run main function recursivel
 
 if choice == "E":                                              # if choose "E"
  password = raw_input(" Enter encryption key: ")             # get keyinput from user
+ print "[!] You can send the encryption key to your personal email"
+ print "    via our TorSMTP configuration."
+ _choice = raw_input("Would you like to send the Encryption Key? Y/N ")
+ if _choice == "Y":
+  print "[+] Enter Email Information: "
+  email = raw_input("Email: ") 
+  LOADER._loader.start()
+  LOADER._loader.sleep(10)
+  LOADER._loader._done = True
+  SMTP.sendMail(email, password)
+  break
+ elif _choice == "N":
+  break
+
  for Tfiles in endFiles:                                     # run through all target files in encrypted file list
      if os.path.basename(Tfiles).startswith(".(encrypted)"): # check if add marker to filename exist
         print " %s is already encrypted" %str(Tfiles)        # print to user
